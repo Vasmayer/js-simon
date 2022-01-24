@@ -13,7 +13,7 @@ controllare che l'utente non inserisca 2 volte lo stesso numero */
 
 /* FUNCTIONS */
 /* restituisce un numero casuale */
-const rdnNumber = (min,max) => Math.floor(Math.random() * (max - min + 1)) - min; 
+const rdnNumber = (min,max) => Math.floor(Math.random() * (max - min + 1)) + min; 
 
 const generateRdnNumbers = (num,element) =>
 {
@@ -40,22 +40,27 @@ const display = document.getElementById('display');
 const button = document.getElementById('avviatimer');
 const numRdn = 5;
 const randomNumbers = generateRdnNumbers(numRdn,display); 
+const numbersGuessed = [];
 
 button.addEventListener('click',() => {
 
-    setTimeout(() =>{
-        display.innerHTML = '<div>*</div><div>*</div><div>*</div><div>*</div><div>*</div>';
+    display.innerHTML = '<div>*</div><div>*</div><div>*</div><div>*</div><div>*</div>';
 
+    setTimeout(() =>{
+    
         const choosenNumbers = [];
 
         for(let i =0;i<numRdn;i++)
         {
-            const choosenNumber = prompt(`Inserisci il numero ${i + 1}/${numRdn}, il numero non deve essere ripetuto`);
-
-            if(choosenNumbers.includes(choosenNumber))
+            const choosenNumber = parseInt(prompt(`Inserisci il numero ${i + 1}/${numRdn}, il numero non deve essere ripetuto`));
+            if(choosenNumbers.includes(choosenNumber) || isNaN(choosenNumber)) 
             {
                 i--;
             }
+            else
+            {
+                choosenNumbers.push(choosenNumber);
+            }        
         }
     },3000);
 
