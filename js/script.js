@@ -38,15 +38,22 @@ const generateRdnNumbers = (num,element) =>
 
 const display = document.getElementById('display');
 const button = document.getElementById('avviatimer');
+const ricomincia = document.getElementById('ricomincia');
+
 const numRdn = 5;
 let randomNumbers = generateRdnNumbers(numRdn,display); 
-const choosenNumbers = [];
+let choosenNumbers = [];
 
+ricomincia.addEventListener('click',() =>{
 
+    randomNumbers = generateRdnNumbers(numRdn,display); 
+    choosenNumbers = [];
+});
 button.addEventListener('click',() => {
-
+  
     display.innerHTML = '<div>*</div><div>*</div><div>*</div><div>*</div><div>*</div>';
     setTimeout(() =>{
+        
         for(let i =0;i<numRdn;i++)
         {
             const choosenNumber = parseInt(prompt(`Inserisci il numero ${i + 1}/${numRdn}, il numero non deve essere ripetuto`));
@@ -60,8 +67,6 @@ button.addEventListener('click',() => {
             }        
         }
         let message = ''
-
-        console.table(choosenNumbers);
         randomNumbers.forEach(item => {
             
             if(choosenNumbers.includes(item))
