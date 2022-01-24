@@ -7,3 +7,14 @@ header
     justify-content: space-around;
     align-items: center;
 }
+
+.display
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
